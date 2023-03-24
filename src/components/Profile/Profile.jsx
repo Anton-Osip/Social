@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './Profile.module.css'
 
 export function Profile() {
 	return (
-		<div className='content'>
+		<div className={styles.content}>
 			<div>
 				<img
-					className='content__img'
+					className={styles.content__img}
 					src='https://assets-global.website-files.com/5ef5480befd392489dacf544/5f9f5e5943de7e69a1339242_5f44a7398c0cdf460857e744_img-image.jpeg'
 					alt=''
 				/>
