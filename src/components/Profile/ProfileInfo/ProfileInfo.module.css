@@ -1,0 +1,29 @@
+.banner__img {
+	width: 100%;
+	max-height: 224px;
+	margin-bottom: 21px;
+}
+.me {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 45px;
+	margin-bottom: 50px;
+}
+.me__avaImg {
+	width: 174px;
+	height: 164px;
+}
+.me__name {
+	color: #47525e;
+	font-family: Lato;
+	font-size: 35px;
+	line-height: 45px;
+	margin-bottom: 37px;
+}
+.me__text {
+	color: #47525e;
+	font-family: Lato;
+	font-size: 26px;
+	line-height: 33px;
+	width: 489px;
+}
