@@ -1,4 +1,5 @@
 import React from 'react'
+import MyPosts from './MyPosts/MyPosts'
 import styles from './Profile.module.css'
 
 export function Profile() {
@@ -13,13 +14,7 @@ export function Profile() {
 			</div>
 			<div>ava + description</div>
 			<div>
-				my posts
-				<div>New posts</div>
-				<div>
-					<div>post 1</div>
-					<div>post 2</div>
-					<div>post 3</div>
-				</div>
+				<MyPosts />
 			</div>
 		</div>
 	)
