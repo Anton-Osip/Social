@@ -3,8 +3,7 @@ import styles from './MyPosts.module.css'
 import Post from './Posts/Post'
 
 export default function MyPosts() {
-	return (
-		<div>
+	return <div>
 			<div className={styles.newPost}>
 				<h3 className={styles.newPost__title}>My posts</h3>
 				<form className={styles.newPost__form}>
@@ -15,8 +14,8 @@ export default function MyPosts() {
 				</form>
 			</div>
 			<div className={styles.posts}>
-				<Post />
+				<Post message='Hi,how are you?' likeCount='15' />
+				<Post message="It's my first post" likeCount='49' />
 			</div>
 		</div>
-	)
 }
