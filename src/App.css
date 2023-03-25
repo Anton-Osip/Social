@@ -38,8 +38,6 @@ a {
 	grid-column-gap: 20px;
 	grid-row-gap: 16px;
 }
-
-
-
-
-
+.content {
+	grid-area: content;
+}
