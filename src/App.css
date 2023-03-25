@@ -41,9 +41,3 @@ a {
 .content {
 	grid-area: content;
 }
-
-.active {
-	color: black;
-	font-weight: 700;
-	transition: font-weight 0.3s, color 0.3s;
-}

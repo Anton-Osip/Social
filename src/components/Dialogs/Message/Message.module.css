@@ -1,0 +1,12 @@
+.dialogs__message {
+	background-color: #ffffff;
+	border: 2px solid #c0ccda;
+	border-radius: 10px;
+	padding: 19px;
+	margin-bottom: 10px;
+	align-self: flex-start;
+	max-width: 400px;
+}
+.dialogs__myMessage.dialogs__message {
+	align-self: flex-end;
+}

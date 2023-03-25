@@ -16,6 +16,18 @@
 	border-right: 1px solid #7e55f3;
 	min-height: calc(100vh - 53px - 34px);
 }
+.dialogs____names div a {
+	color: #8190a5;
+	font-family: Lato;
+	font-size: 18px;
+	line-height: 36px;
+	margin-bottom: 31px;
+	padding-left: 27px;
+	position: relative;
+	transition: all 0.3s;
+	cursor: pointer;
+	display: block;
+}
 
 .dialogs__messages {
 	display: flex;

@@ -10,6 +10,7 @@ import { Music } from './components/Music/Music'
 import { Settings } from './components/Settings/Settings'
 
 const App = () => {
+
 	let linksElements = [
 		{ id: 1, link: 'Профиль', href: '/profile' },
 		{ id: 2, link: 'Сообщения', href: '/dialogs' },
