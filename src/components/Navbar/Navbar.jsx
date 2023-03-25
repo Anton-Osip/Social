@@ -1,25 +1,19 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import styles from './Navbar.module.css'
+import uuid from 'react-uuid'
 
-export function Navbar() {
+import { Link } from './Link/Link'
+import { FrendLink } from './FrendLink/FrendLink'
+
+export function Navbar(props) {
+	const linksElements = props.links.map(link => (
+		<Link link={link.link} href={link.href} key={uuid()} />
+	))
+	const frendsElements = props.frends.map(frend => <FrendLink key={uuid()} name={frend.name} />)
 	return (
 		<nav className={styles.nav}>
-			<div className={styles.item}>
-				<NavLink to='/profile' activeClassName={styles.activeLink}>Profile</NavLink>
-			</div>
-			<div className={styles.item}>
-				<NavLink to='/dialogs' activeClassName={styles.activeLink}>Messages</NavLink>
-			</div>
-			<div className={styles.item}>
-				<NavLink to='/news' activeClassName={styles.activeLink}>News</NavLink>
-			</div>
-			<div className={styles.item}>
-				<NavLink to='/music' activeClassName={styles.activeLink}>Music</NavLink>
-			</div>
-			<div className={styles.item}>
-				<NavLink to='/settings' activeClassName={styles.activeLink}>Settings</NavLink>
-			</div>
+			{linksElements}
+			<div className={styles.frends}>{frendsElements}</div>
 		</nav>
 	)
 }
