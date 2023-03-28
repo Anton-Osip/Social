@@ -12,7 +12,7 @@ export default function MyPosts(props) {
 
 	let addPost = event => {
 		event.preventDefault()
-		props.addPost(newPostElement)
+		props.addPost(newPostElement.current.value)
 	}
 
 	return (
