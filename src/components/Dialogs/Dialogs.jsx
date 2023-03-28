@@ -5,23 +5,10 @@ import uuid from 'react-uuid'
 import { Dialog } from './Dialog/Dialog'
 import { Message } from './Message/Message'
 
-export function Dialogs() {
-	let dialogs = [
-		{ id: 1, name: 'Anton' },
-		{ id: 2, name: 'Viktor' },
-		{ id: 3, name: 'Valera' },
-		{ id: 4, name: 'Sveta' },
-		{ id: 5, name: 'Pasha' },
-	]
-	let messages = [
-		{ id: 1, message: 'I am a normal pBLablabl I can have text and						everything', my: false },
-		{ id: 2, message: 'I am a normal pBLablabl I can have text and						everything', my: true },
-		{ id: 3, message: 'I am a normal pBLablabl I can have text and						everything', my: false },
-		{ id: 4, message: 'I am a normal pBLablabl I can have text and						everything', my: true },
-	]
-	const dialogsElements = dialogs.map(dialog => <Dialog name={dialog.name} key={uuid()} />)
+export function Dialogs(props) {
+	const dialogsElements = props.dialogs.map(dialog => <Dialog name={dialog.name} key={uuid()} />)
 
-	const messagesElements = messages.map(message => (
+	const messagesElements = props.messages.map(message => (
 		<Message message={message.message} key={uuid()} my={message.my} />
 	))
 	return (

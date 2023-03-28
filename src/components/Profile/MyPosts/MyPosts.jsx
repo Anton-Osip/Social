@@ -1,10 +1,12 @@
 import React from 'react'
+import uuid from 'react-uuid'
 import styles from './MyPosts.module.css'
 import Post from './Posts/Post'
 
-export default function MyPosts() {
-	return (
-		<div>
+export default function MyPosts(props) {
+
+	let postElem = props.posts.map((item)=>(<Post message={item.message} likeCount={item.likeCount} key={uuid()}/>))
+	return <div>
 			<div className={styles.newPost}>
 				<h3 className={styles.newPost__title}>My posts</h3>
 				<form className={styles.newPost__form}>
@@ -14,10 +16,6 @@ export default function MyPosts() {
 					</button>
 				</form>
 			</div>
-			<div className={styles.posts}>
-				<Post message='Hi,how are you?' likeCount='15' />
-				<Post message="It's my first post" likeCount='49' />
-			</div>
+			<div className={styles.posts}>{postElem}</div>
 		</div>
-	)
 }
