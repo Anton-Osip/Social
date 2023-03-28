@@ -6,9 +6,11 @@ import { Dialog } from './Dialog/Dialog'
 import { Message } from './Message/Message'
 
 export function Dialogs(props) {
-	const dialogsElements = props.dialogs.map(dialog => <Dialog name={dialog.name} key={uuid()} />)
+	const dialogsElements = props.state.dialogs.map(dialog => (
+		<Dialog name={dialog.name} key={uuid()} />
+	))
 
-	const messagesElements = props.messages.map(message => (
+	const messagesElements = props.state.messages.map(message => (
 		<Message message={message.message} key={uuid()} my={message.my} />
 	))
 	return (
