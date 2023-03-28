@@ -12,7 +12,7 @@ export default function Post(props) {
 			<p className={styles.post__text}>{props.message}</p>
 			<div className={styles.post__like}>
 				<img src={like} alt='like' />
-				<span className={styles.post__likeNum}>{props.likeCount}</span>
+				<span className={styles.post__likeNum}>{props.likesCount}</span>
 			</div>
 		</div>
 }

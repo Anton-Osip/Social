@@ -5,14 +5,14 @@ import Post from './Posts/Post'
 
 export default function MyPosts(props) {
 	let postElem = props.posts.map(item => (
-		<Post message={item.message} likeCount={item.likeCount} key={uuid()} />
+		<Post message={item.message} likesCount={item.likesCount} key={uuid()} />
 	))
 
 	let newPostElement = createRef()
 
 	let addPost = event => {
 		event.preventDefault()
-		console.log(newPostElement.current.value)
+		props.addPost(newPostElement)
 	}
 
 	return (

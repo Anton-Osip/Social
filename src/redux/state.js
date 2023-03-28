@@ -1,8 +1,8 @@
 export let state = {
 	profilePage: {
 		posts: [
-			{ id: 1, message: 'Hey, why nobody love me?', likeCount: '10' },
-			{ id: 2, message: "It's our new program! Hey!", likeCount: '55' },
+			{ id: 1, message: 'Hey, why nobody love me?', likesCount: '10' },
+			{ id: 2, message: "It's our new program! Hey!", likesCount: '55' },
 		],
 	},
 	dialogsPage: {
@@ -32,4 +32,13 @@ export let state = {
 		],
 		FrendLink: [{ id: 1, name: 'Anton' }, { id: 2, name: 'Viktor' }, { id: 3, name: 'Valera' }],
 	},
+}
+
+export let addPost = postMessage => {
+	let newPost = {
+		id: state.profilePage.posts.length,
+		message: postMessage,
+		likesCount: '0',
+	}
+	state.profilePage.posts.push(newPost)
 }
