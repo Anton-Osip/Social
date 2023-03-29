@@ -18,10 +18,10 @@ export function Dialogs(props) {
 
 	let addMasseg = event => {
 		event.preventDefault()
-		props.addMessages(newDialogsElement.current.value)
+		props.dispatch({ type: 'ADD-MESSAGE' })
 	}
 	let onMassegeChange = () => {
-		props.updateNewMessageText(newDialogsElement.current.value)
+		props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newText: newDialogsElement.current.value })
 	}
 
 	return (

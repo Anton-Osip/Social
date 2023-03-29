@@ -21,7 +21,7 @@ export let store = {
 				{ id: 3, message: 'I am a normal pBLablabl I can have text and						everything', my: false },
 				{ id: 4, message: 'I am a normal pBLablabl I can have text and						everything', my: true },
 			],
-			newMessageText: '',
+			newMessageText: 'aaa',
 		},
 		navbarPage: {
 			linksElements: [
@@ -36,42 +36,42 @@ export let store = {
 			FrendLink: [{ id: 1, name: 'Anton' }, { id: 2, name: 'Viktor' }, { id: 3, name: 'Valera' }],
 		},
 	},
-	getState() {
-		return this._state
-	},
 	_rerenderEntireTree() {
 		console.log('state was changed')
 	},
-	addPost(postMessage) {
-		let newMessage = {
-			id: this._state.profilePage.posts.length + 1,
-			message: postMessage,
-			likesCount: '0',
-		}
-		this._state.profilePage.posts.push(newMessage)
-		this._state.profilePage.newPostText = ''
-		this._rerenderEntireTree(this._state)
-	},
-	updateNewPostText(newText) {
-		this._state.profilePage.newPostText = newText
-		this._rerenderEntireTree(this._state)
-	},
-	addMessages(postMessage) {
-		let newMessages = {
-			id: this._state.dialogsPage.messages.length + 1,
-			message: postMessage,
-			my: true,
-		}
-		this._state.dialogsPage.messages.push(newMessages)
-		this._state.dialogsPage.newMessageText = ''
-		this._rerenderEntireTree(this._state)
-	},
-	updateNewMessageText(newText) {
-		this._state.dialogsPage.newMessageText = newText
-		this._rerenderEntireTree(this._state)
-	},
 	subscribe(observer) {
 		this._rerenderEntireTree = observer
+	},
+	getState() {
+		return this._state
+	},
+
+	dispatch(action) {
+		if (action.type === 'ADD-POST') {
+			let newMessage = {
+				id: this._state.profilePage.posts.length + 1,
+				message: this._state.profilePage.newPostText,
+				likesCount: '0',
+			}
+			this._state.profilePage.posts.push(newMessage)
+			this._state.profilePage.newPostText = ''
+			this._rerenderEntireTree(this._state)
+		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+			this._state.profilePage.newPostText = action.newText
+			this._rerenderEntireTree(this._state)
+		} else if (action.type === 'ADD-MESSAGE') {
+			let newMessages = {
+				id: this._state.dialogsPage.messages.length + 1,
+				message: this._state.dialogsPage.newMessageText,
+				my: true,
+			}
+			this._state.dialogsPage.messages.push(newMessages)
+			this._state.dialogsPage.newMessageText = ''
+			this._rerenderEntireTree(this._state)
+		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+			this._state.dialogsPage.newMessageText = action.newText
+			this._rerenderEntireTree(this._state)
+		}
 	},
 }
 
