@@ -4,6 +4,7 @@ import uuid from 'react-uuid'
 
 import { Dialog } from './Dialog/Dialog'
 import { Message } from './Message/Message'
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/state'
 
 export function Dialogs(props) {
 	const dialogsElements = props.state.dialogs.map(dialog => (
@@ -18,10 +19,13 @@ export function Dialogs(props) {
 
 	let addMasseg = event => {
 		event.preventDefault()
-		props.dispatch({ type: 'ADD-MESSAGE' })
+		let action = addMessageActionCreator()
+		props.dispatch(action)
 	}
 	let onMassegeChange = () => {
-		props.dispatch({ type: 'UPDATE-NEW-MESSAGE-TEXT', newText: newDialogsElement.current.value })
+		let text = newDialogsElement.current.value
+		let action = updateNewMessageTextActionCreator(text)
+		props.dispatch(action)
 	}
 
 	return (
