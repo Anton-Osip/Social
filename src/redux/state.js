@@ -5,6 +5,7 @@ export let state = {
 			{ id: 1, message: 'Hey, why nobody love me?', likesCount: '10' },
 			{ id: 2, message: "It's our new program! Hey!", likesCount: '55' },
 		],
+		newPostText: '',
 	},
 	dialogsPage: {
 		dialogs: [
@@ -20,6 +21,7 @@ export let state = {
 			{ id: 3, message: 'I am a normal pBLablabl I can have text and						everything', my: false },
 			{ id: 4, message: 'I am a normal pBLablabl I can have text and						everything', my: true },
 		],
+		newMessageText: '',
 	},
 	navbarPage: {
 		linksElements: [
@@ -35,12 +37,32 @@ export let state = {
 	},
 }
 
+window.state = state
+
+export let addMessages = postMessage => {
+	let newMessages = { id: state.dialogsPage.messages.length, message: postMessage, my: true }
+	state.dialogsPage.messages.push(newMessages)
+	state.dialogsPage.newMessageText = ''
+	rerenderEntireTree(state)
+}
+
+export let updateNewMessageText = newText => {
+	state.dialogsPage.newMessageText = newText
+	rerenderEntireTree(state)
+}
+
 export let addPost = postMessage => {
-	let newPost = {
+	let newMessage = {
 		id: state.profilePage.posts.length,
 		message: postMessage,
 		likesCount: '0',
 	}
-	state.profilePage.posts.push(newPost)
+	state.profilePage.posts.push(newMessage)
+	state.profilePage.newPostText = ''
+	rerenderEntireTree(state)
+}
+
+export let updateNewPostText = newText => {
+	state.profilePage.newPostText = newText
 	rerenderEntireTree(state)
 }

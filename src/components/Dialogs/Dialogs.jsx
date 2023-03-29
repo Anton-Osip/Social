@@ -18,7 +18,10 @@ export function Dialogs(props) {
 
 	let addMasseg = event => {
 		event.preventDefault()
-		console.log(newDialogsElement.current.value)
+		props.addMessages(newDialogsElement.current.value)
+	}
+	let onMassegeChange = () => {
+		props.updateNewMessageText(newDialogsElement.current.value)
 	}
 
 	return (
@@ -29,7 +32,12 @@ export function Dialogs(props) {
 				<div className={styles.dialogs__messages}>{messagesElements}</div>
 			</div>
 			<form className={styles.dialogs__form}>
-				<textarea className={styles.dialogs__input} ref={newDialogsElement} />
+				<textarea
+					className={styles.dialogs__input}
+					ref={newDialogsElement}
+					value={props.state.newMessageText}
+					onChange={onMassegeChange}
+				/>
 				<button type='submit' className={styles.dialogs__btn} onClick={addMasseg}>
 					Send
 				</button>

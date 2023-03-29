@@ -15,12 +15,21 @@ export default function MyPosts(props) {
 		props.addPost(newPostElement.current.value)
 	}
 
+	let onPostChange = () => {
+		props.updateNewPostText(newPostElement.current.value)
+	}
+
 	return (
 		<div>
 			<div className={styles.newPost}>
 				<h3 className={styles.newPost__title}>My posts</h3>
 				<form className={styles.newPost__form}>
-					<textarea className={styles.newPost__input} ref={newPostElement} />
+					<textarea
+						className={styles.newPost__input}
+						ref={newPostElement}
+						value={props.newPostText}
+						onChange={onPostChange}
+					/>
 					<button type='submit' className={styles.newPost__btn} onClick={addPost}>
 						Send
 					</button>
