@@ -1,7 +1,8 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+
 export let store = {
 	_state: {
 		profilePage: {
@@ -25,7 +26,7 @@ export let store = {
 				{ id: 3, message: 'I am a normal pBLablabl I can have text and						everything', my: false },
 				{ id: 4, message: 'I am a normal pBLablabl I can have text and						everything', my: true },
 			],
-			newMessageText: 'aaa',
+			newMessageBody: '',
 		},
 		navbarPage: {
 			linksElements: [
@@ -63,17 +64,17 @@ export let store = {
 		} else if (action.type === UPDATE_NEW_POST_TEXT) {
 			this._state.profilePage.newPostText = action.newText
 			this._rerenderEntireTree(this._state)
-		} else if (action.type === ADD_MESSAGE) {
+		} else if (action.type === SEND_MESSAGE) {
 			let newMessages = {
 				id: this._state.dialogsPage.messages.length + 1,
-				message: this._state.dialogsPage.newMessageText,
+				message: this._state.dialogsPage.newMessageBody,
 				my: true,
 			}
 			this._state.dialogsPage.messages.push(newMessages)
-			this._state.dialogsPage.newMessageText = ''
+			this._state.dialogsPage.newMessageBody = ''
 			this._rerenderEntireTree(this._state)
-		} else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-			this._state.dialogsPage.newMessageText = action.newText
+		} else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+			this._state.dialogsPage.newMessageBody = action.body
 			this._rerenderEntireTree(this._state)
 		}
 	},
@@ -85,11 +86,11 @@ export const updateNewPostTextActionCreator = newText => ({
 	newText: newText,
 })
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
 
-export const updateNewMessageTextActionCreator = newText => ({
-	type: UPDATE_NEW_MESSAGE_TEXT,
-	newText: newText,
+export const updateNewMessageBodyActionCreator = body => ({
+	type: UPDATE_NEW_MESSAGE_BODY,
+	body: body,
 })
 
 window.store = store

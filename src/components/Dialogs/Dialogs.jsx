@@ -4,28 +4,26 @@ import uuid from 'react-uuid'
 
 import { Dialog } from './Dialog/Dialog'
 import { Message } from './Message/Message'
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/state'
+import { sendMessageActionCreator, updateNewMessageBodyActionCreator } from '../../redux/state'
 
 export function Dialogs(props) {
-	const dialogsElements = props.state.dialogs.map(dialog => (
-		<Dialog name={dialog.name} key={uuid()} />
-	))
+	let state = props.store.getState().dialogsPage
+	let newMessageBody = state.newMessageBody
+	const dialogsElements = state.dialogs.map(dialog => <Dialog name={dialog.name} key={uuid()} />)
 
-	const messagesElements = props.state.messages.map(message => (
+	const messagesElements = state.messages.map(message => (
 		<Message message={message.message} key={uuid()} my={message.my} />
 	))
 
-	let newDialogsElement = createRef()
-
 	let addMasseg = event => {
 		event.preventDefault()
-		let action = addMessageActionCreator()
-		props.dispatch(action)
+		let action = sendMessageActionCreator()
+		props.store.dispatch(action)
 	}
-	let onMassegeChange = () => {
-		let text = newDialogsElement.current.value
-		let action = updateNewMessageTextActionCreator(text)
-		props.dispatch(action)
+	let onMassegeChange = e => {
+		let text = e.target.value
+		let action = updateNewMessageBodyActionCreator(text)
+		props.store.dispatch(action)
 	}
 
 	return (
@@ -36,12 +34,7 @@ export function Dialogs(props) {
 				<div className={styles.dialogs__messages}>{messagesElements}</div>
 			</div>
 			<form className={styles.dialogs__form}>
-				<textarea
-					className={styles.dialogs__input}
-					ref={newDialogsElement}
-					value={props.state.newMessageText}
-					onChange={onMassegeChange}
-				/>
+				<textarea className={styles.dialogs__input} value={newMessageBody} onChange={onMassegeChange} />
 				<button type='submit' className={styles.dialogs__btn} onClick={addMasseg}>
 					Send
 				</button>
