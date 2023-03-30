@@ -1,8 +1,10 @@
+import { dialogsReducer } from './dialogs-reducer '
+import { navbarReducer } from './navbar-reducer'
+import { profileReducer } from './profile-reducer'
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SEND_MESSAGE = 'SEND-MESSAGE'
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-
 export let store = {
 	_state: {
 		profilePage: {
@@ -52,31 +54,10 @@ export let store = {
 	},
 
 	dispatch(action) {
-		if (action.type === ADD_POST) {
-			let newMessage = {
-				id: this._state.profilePage.posts.length + 1,
-				message: this._state.profilePage.newPostText,
-				likesCount: '0',
-			}
-			this._state.profilePage.posts.push(newMessage)
-			this._state.profilePage.newPostText = ''
-			this._rerenderEntireTree(this._state)
-		} else if (action.type === UPDATE_NEW_POST_TEXT) {
-			this._state.profilePage.newPostText = action.newText
-			this._rerenderEntireTree(this._state)
-		} else if (action.type === SEND_MESSAGE) {
-			let newMessages = {
-				id: this._state.dialogsPage.messages.length + 1,
-				message: this._state.dialogsPage.newMessageBody,
-				my: true,
-			}
-			this._state.dialogsPage.messages.push(newMessages)
-			this._state.dialogsPage.newMessageBody = ''
-			this._rerenderEntireTree(this._state)
-		} else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-			this._state.dialogsPage.newMessageBody = action.body
-			this._rerenderEntireTree(this._state)
-		}
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.navbarPage = navbarReducer(this._state.navbarPage, action)
+		this._rerenderEntireTree(this._state)
 	},
 }
 export const addPostActionCreator = () => ({ type: ADD_POST })
