@@ -1,6 +1,5 @@
 import React, { createRef } from 'react'
 import uuid from 'react-uuid'
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state'
 import styles from './MyPosts.module.css'
 import Post from './Posts/Post'
 
@@ -11,16 +10,14 @@ export default function MyPosts(props) {
 
 	let newPostElement = createRef()
 
-	let addPost = event => {
+	let onAddPost = event => {
 		event.preventDefault()
-		let action = addPostActionCreator()
-		props.dispatch(action)
+		props.addPost()
 	}
 
 	let onPostChange = () => {
 		let text = newPostElement.current.value
-		let action = updateNewPostTextActionCreator(text)
-		props.dispatch(action)
+		props.updateNewPostText(text)
 	}
 
 	return (
@@ -34,7 +31,7 @@ export default function MyPosts(props) {
 						value={props.newPostText}
 						onChange={onPostChange}
 					/>
-					<button type='submit' className={styles.newPost__btn} onClick={addPost}>
+					<button type='submit' className={styles.newPost__btn} onClick={onAddPost}>
 						Send
 					</button>
 				</form>
