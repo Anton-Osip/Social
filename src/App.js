@@ -8,17 +8,12 @@ import { News } from './components/News/News'
 import { Music } from './components/Music/Music'
 import { Settings } from './components/Settings/Settings'
 import { DialogsContainer } from './components/Dialogs/DialogsContainer'
-import { StoreContext } from './StoreContext'
 
 const App = props => {
 	return (
 		<div className='app-wrapper'>
 			<Header />
-			<StoreContext.Consumer>
-				{store => {
-					return <Navbar state={store.getState().navbarPage} />
-				}}
-			</StoreContext.Consumer>
+			<Navbar state={props.store.getState().navbarPage} />
 
 			<div className='content'>
 				<Route path='/profile' render={() => <Profile />} />
