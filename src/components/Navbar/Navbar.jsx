@@ -6,10 +6,10 @@ import { Link } from './Link/Link'
 import { FrendLink } from './FrendLink/FrendLink'
 
 export function Navbar(props) {
-	const linksElements = props.state.linksElements.map(link => (
+	const linksElements = props.dialogsPage.linksElements.map(link => (
 		<Link link={link.link} href={link.href} key={uuid()} />
 	))
-	const frendsElements = props.state.FrendLink.map(frend => (
+	const frendsElements = props.dialogsPage.FrendLink.map(frend => (
 		<FrendLink key={uuid()} name={frend.name} />
 	))
 	return (
