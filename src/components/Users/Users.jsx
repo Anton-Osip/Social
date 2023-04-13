@@ -6,12 +6,11 @@ import userImg from '../../images/ava.jpeg'
 import axios from 'axios'
 
 export class Users extends Component {
-	componentDidMount = () => {
-		if (this.props.users.length === 0) {
-			axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-				this.props.setUsers(response.data.items)
-			})
-		}
+	constructor(props) {
+		super(props)
+		axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+			this.props.setUsers(response.data.items)
+		})
 	}
 
 	render() {
