@@ -21,6 +21,9 @@ class UsersContainer extends Component {
 				`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${
 					this.props.pageSize
 				}`,
+				{
+					withCredentials: true,
+				},
 			)
 			.then(response => {
 				this.props.toggleIsFetching(false)
@@ -33,7 +36,12 @@ class UsersContainer extends Component {
 		this.props.setCurrentPage(p)
 		this.props.toggleIsFetching(true)
 		axios
-			.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`,
+				{
+					withCredentials: true,
+				},
+			)
 			.then(response => {
 				this.props.toggleIsFetching(false)
 				this.props.setUsers(response.data.items)
@@ -70,29 +78,6 @@ let mapStateToProps = state => {
 		isFetching: state.usersPage.isFetching,
 	}
 }
-
-// let MapDispatchToProps = dispatch => {
-// 	return {
-// 		follow: userId => {
-// 			dispatch(followAC(userId))
-// 		},
-// 		unfollow: userId => {
-// 			dispatch(unfollowAC(userId))
-// 		},
-// 		setUsers: users => {
-// 			dispatch(setUsersAC(users))
-// 		},
-// 		setCurrentPage: currentPage => {
-// 			dispatch(setCurrentPageAC(currentPage))
-// 		},
-// 		setTotalUsersCount: totalUsersCount => {
-// 			dispatch(setTotalUsersCountAC(totalUsersCount))
-// 		},
-// 		toggleIsFetching: isFetching => {
-// 			dispatch(toggleIsFetchingAC(isFetching))
-// 		},
-// 	}
-// }
 
 export default connect(
 	mapStateToProps,
