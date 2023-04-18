@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export default class ProfileStatus extends Component {
 	state = { editeMode: false }
 
-	activateEditMode() {
+	activateEditMode = () => {
 		this.setState({ editeMode: true })
 	}
-	deaactivateEditMode() {
+	deaactivateEditMode = () => {
 		this.setState({ editeMode: false })
 	}
 
@@ -15,12 +15,12 @@ export default class ProfileStatus extends Component {
 			<div>
 				{!this.state.editeMode && (
 					<div>
-						<span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+						<span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
 					</div>
 				)}
 				{this.state.editeMode && (
 					<div>
-						<input value={this.props.status} autoFocus onBlur={this.deaactivateEditMode.bind(this)} />
+						<input value={this.props.status} autoFocus onBlur={this.deaactivateEditMode} />
 					</div>
 				)}
 			</div>
