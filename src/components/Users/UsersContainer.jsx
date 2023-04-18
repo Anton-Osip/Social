@@ -10,6 +10,7 @@ import {
 	getUsers,
 } from '../../redux/users-reducer'
 import { Preloader } from '../Preloader/Preloader'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 
 class UsersContainer extends Component {
 	componentDidMount() {
@@ -54,6 +55,8 @@ let mapStateToProps = state => {
 	}
 }
 
+let withRedirect = withAuthRedirect(UsersContainer)
+
 export default connect(
 	mapStateToProps,
 	{
@@ -63,4 +66,4 @@ export default connect(
 		toggleIsFollowingProgress,
 		getUsers,
 	},
-)(UsersContainer)
+)(withRedirect)

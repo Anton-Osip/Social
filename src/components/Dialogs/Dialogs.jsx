@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Dialogs.module.css'
 import uuid from 'react-uuid'
 import { Message } from './Message/Message'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export function Dialogs(props) {
 	let newMessageBody = props.dialogsPage.newMessageBody
@@ -19,7 +19,6 @@ export function Dialogs(props) {
 		let text = e.target.value
 		props.updateNewMessageBody(text)
 	}
-	if (!props.isAuth) return <Redirect to={'/login'} />
 
 	return (
 		<div className={styles.dialogs}>
