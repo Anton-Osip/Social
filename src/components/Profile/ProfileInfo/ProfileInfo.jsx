@@ -9,8 +9,7 @@ export default function ProfileInfo(props) {
 	if (!props.profile) {
 		return <Preloader />
 	}
-	return (
-		<>
+	return <>
 			<div>
 				<img src={banner} alt='banner' className={styles.banner__img} />
 			</div>
@@ -36,7 +35,6 @@ export default function ProfileInfo(props) {
 					</p>
 				</div>
 			</div>
-			<ProfileStatus status={'hellow'} />
+			<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 		</>
-	)
 }

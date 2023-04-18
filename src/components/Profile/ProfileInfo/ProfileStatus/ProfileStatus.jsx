@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 export default class ProfileStatus extends Component {
-	state = { editeMode: false }
+	state = { editeMode: false, status: this.props.status }
 
 	activateEditMode = () => {
 		this.setState({ editeMode: true })
 	}
 	deaactivateEditMode = () => {
 		this.setState({ editeMode: false })
+		this.props.updateStatus(this.state.status)
+	}
+	onStatusChange = event => {
+		this.setState({ status: event.currentTarget.value })
 	}
 
 	render() {
@@ -15,12 +19,17 @@ export default class ProfileStatus extends Component {
 			<div>
 				{!this.state.editeMode && (
 					<div>
-						<span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+						<span onDoubleClick={this.activateEditMode}>{this.props.status || '------'}</span>
 					</div>
 				)}
 				{this.state.editeMode && (
 					<div>
-						<input value={this.props.status} autoFocus onBlur={this.deaactivateEditMode} />
+						<input
+							value={this.state.status}
+							onChange={this.onStatusChange}
+							autoFocus
+							onBlur={this.deaactivateEditMode}
+						/>
 					</div>
 				)}
 			</div>
