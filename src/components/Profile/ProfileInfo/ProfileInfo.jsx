@@ -9,7 +9,8 @@ export default function ProfileInfo(props) {
 	if (!props.profile) {
 		return <Preloader />
 	}
-	return <>
+	return (
+		<>
 			<div>
 				<img src={banner} alt='banner' className={styles.banner__img} />
 			</div>
@@ -23,6 +24,7 @@ export default function ProfileInfo(props) {
 				</div>
 				<div className={styles.me__info}>
 					<h3 className={styles.me__name}>{props.profile.fullName}</h3>
+					<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 
 					<p className={styles.me__text}>Date of Birth: 30 october</p>
 					<p className={styles.me__text}>City: Minsk</p>
@@ -35,6 +37,6 @@ export default function ProfileInfo(props) {
 					</p>
 				</div>
 			</div>
-			<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 		</>
+	)
 }

@@ -1,6 +1,25 @@
 .profileStatus {
 	width: 100%;
 	min-width: 250px;
-	height: 25px;
+	min-height: 25px;
+	margin-bottom: 25px;
+}
+.statusText {
+	color: #47525e;
+	font-family: Lato;
+	font-size: 33px;
+	line-height: 40px;
+}
+.statusInput {
 	background-color: #e6eeea;
+	min-height: 50px;
+	max-width: 100%;
+	width: 100%;
+	border: none;
+	outline: none;
+	margin-bottom: 22px;
+	padding: 10px 19px;
+	font-size: 26px;
+	line-height: 33px;
+	resize: none;
 }
