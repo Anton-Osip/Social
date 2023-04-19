@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react'
+import React, { Component } from 'react'
 
 export default class ProfileStatus extends Component {
 	state = { editeMode: false, status: this.props.status }
@@ -12,6 +12,12 @@ export default class ProfileStatus extends Component {
 	}
 	onStatusChange = event => {
 		this.setState({ status: event.currentTarget.value })
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.status !== this.props.status) {
+			this.setState({ status: this.props.status })
+		}
 	}
 
 	render() {
