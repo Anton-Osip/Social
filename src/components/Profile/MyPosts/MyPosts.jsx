@@ -1,40 +1,23 @@
-import React, { createRef } from 'react'
+import React from 'react'
 import uuid from 'react-uuid'
 import styles from './MyPosts.module.css'
 import Post from './Posts/Post'
+import { AddNewPostFormRedux } from './AddNewPostForm/AddNewPostForm'
 
 export default function MyPosts(props) {
 	let postElem = props.posts.map(item => (
 		<Post message={item.message} likesCount={item.likesCount} key={uuid()} />
 	))
 
-	let newPostElement = createRef()
-
-	let onAddPost = event => {
-		event.preventDefault()
-		props.addPost()
-	}
-
-	let onPostChange = () => {
-		let text = newPostElement.current.value
-		props.updateNewPostText(text)
+	let onAddPost = value => {
+		props.addPost(value.newPostText)
 	}
 
 	return (
 		<div>
 			<div className={styles.newPost}>
 				<h3 className={styles.newPost__title}>My posts</h3>
-				<form className={styles.newPost__form}>
-					<textarea
-						className={styles.newPost__input}
-						ref={newPostElement}
-						value={props.newPostText}
-						onChange={onPostChange}
-					/>
-					<button type='submit' className={styles.newPost__btn} onClick={onAddPost}>
-						Send
-					</button>
-				</form>
+				<AddNewPostFormRedux onSubmit={onAddPost} />
 			</div>
 			<div className={styles.posts}>{postElem}</div>
 		</div>

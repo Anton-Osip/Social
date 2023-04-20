@@ -1,0 +1,29 @@
+.dialogs__form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-top: 25px;
+}
+.dialogs__input {
+	background-color: #e6eeea;
+	height: 84px;
+	width: 100%;
+	border: none;
+	outline: none;
+	margin-bottom: 22px;
+	padding: 10px 19px;
+	font-size: 26px;
+	line-height: 33px;
+	resize: none;
+}
+.dialogs__btn {
+	color: #ffffff;
+	font-family: Lato;
+	font-size: 26px;
+	line-height: 33px;
+	padding: 5px 22px;
+	background-color: #0cb658;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}

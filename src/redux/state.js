@@ -60,18 +60,8 @@ export let store = {
 		this._rerenderEntireTree(this._state)
 	},
 }
-export const addPostActionCreator = () => ({ type: ADD_POST })
 
-export const updateNewPostTextActionCreator = newText => ({
-	type: UPDATE_NEW_POST_TEXT,
-	newText: newText,
-})
 
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
 
-export const updateNewMessageBodyActionCreator = body => ({
-	type: UPDATE_NEW_MESSAGE_BODY,
-	body: body,
-})
 
 window.store = store
