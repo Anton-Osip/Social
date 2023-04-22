@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './ProfileInfo.module.css'
 import banner from '../../../images/banner.jpeg'
 import ava from '../../../images/ava.jpeg'
-import { Preloader } from '../../Preloader/Preloader'
 import ProfileStatus from './ProfileStatus/ProfileStatus'
+import { Preloader } from '../../common/Preloader/Preloader'
 
 export default function ProfileInfo(props) {
 	if (!props.profile) {
-		return <Preloader />
+		return <Preloader/>
 	}
 	return (
 		<>

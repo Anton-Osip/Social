@@ -1,0 +1,24 @@
+.form_control_textArea {
+	width: 100%;
+}
+.form_control_textArea.error input,
+.form_control_textArea.error textarea {
+	border: solid 2px red;
+}
+
+.error input,
+.form_control.error textarea {
+	border: solid 2px red;
+}
+
+.form_control_textArea.error span {
+	color: red;
+	font-size: 24px;
+	line-height: 28px;
+}
+.error span {
+	color: red;
+	font-size: 24px;
+	line-height: 28px;
+	display: block;
+}

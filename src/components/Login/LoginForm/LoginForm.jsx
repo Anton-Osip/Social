@@ -1,31 +1,35 @@
 import React from 'react'
 import styles from './loginForm.module.css'
 import { Field, reduxForm } from 'redux-form'
+import { Input } from '../../common/FormsControls/FormsControls'
+import { required } from '../../../utils/validators/validators'
 
 function LoginForm(props) {
 	return (
 		<form className={styles.form} onSubmit={props.handleSubmit}>
 			<div className={styles.inputWrapper}>
 				<Field
-					component={'input'}
+					component={Input}
 					name={'login'}
 					className={styles.input}
 					type='text'
 					placeholder='Login'
+					validate={[required]}
 				/>
 			</div>
 			<div className={styles.inputWrapper}>
 				<Field
-					component={'input'}
+					component={Input}
 					name={'password'}
 					className={styles.input}
 					type='password'
 					placeholder='Password'
+					validate={[required]}
 				/>
 			</div>
 			<div className={styles.checkboxWrapper}>
 				<Field
-					component={'input'}
+					component={Input}
 					name={'rememberMe'}
 					className={styles.checkbox}
 					type='checkbox'
