@@ -1,4 +1,5 @@
 .form_control_textArea {
+	width: 100%;
 }
 .form_control_textArea.error input,
 .form_control_textArea.error textarea {
