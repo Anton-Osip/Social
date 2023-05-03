@@ -11,7 +11,14 @@ export function Header(props) {
 				alt='Logo'
 			/>
 			<div className={styles.loginBlock}>
-				{props.isAuth ? <p>{props.login}</p> : <NavLink to={'/login'}>Login</NavLink>}
+				{props.isAuth ? (
+					<div className={styles.login__block}>
+						<p>{props.login} </p>
+						<button onClick={props.logout} className={styles.logout__btn}>Logout</button>
+					</div>
+				) : (
+					<NavLink to={'/login'}>Login</NavLink>
+				)}
 			</div>
 		</header>
 	)

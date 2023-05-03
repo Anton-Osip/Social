@@ -10,10 +10,10 @@ function LoginForm(props) {
 			<div className={styles.inputWrapper}>
 				<Field
 					component={Input}
-					name={'login'}
+					name={'email'}
 					className={styles.input}
-					type='text'
-					placeholder='Login'
+					type='email'
+					placeholder='Email'
 					validate={[required]}
 				/>
 			</div>
