@@ -39,6 +39,8 @@ function LoginForm(props) {
 					Remember me
 				</label>
 			</div>
+			{props.error && <div className={styles.form_summerary_error}>{props.error}</div>}
+
 			<div>
 				<button type='submit' className={styles.btn}>
 					Login

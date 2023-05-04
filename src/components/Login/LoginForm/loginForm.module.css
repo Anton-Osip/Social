@@ -16,7 +16,6 @@
 	line-height: 33px;
 }
 .checkboxWrapper {
-	margin-bottom: 15px;
 	display: flex;
 	align-items: center;
 }
@@ -43,4 +42,8 @@
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+.form_summerary_error {
+	padding: 5px;
+	color: red;
 }
